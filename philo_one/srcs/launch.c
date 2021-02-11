@@ -22,25 +22,12 @@ int		ft_launch_threads(void)
 		if (pthread_create(&(g_global.philos[philo].thread), NULL, \
 		ft_launch_party, (void *)(&g_global.philos[philo])))
 			return (ft_thread_error(philo));
-		philo++;// += 2;
+		philo++;
 	}
-/*	philo = 1;
-	while (philo < g_global.number_of_philosophers)
-	{
-		if (pthread_create(&(g_global.philos[philo].thread), NULL, \
-			ft_launch_party, (void *)(&g_global.philos[philo])))
-			return (ft_thread_error(philo));
-		philo += 2;
-		usleep(5000);
-	}*/
-	/*if (pthread_create(&(g_global.philos[philo].thread), NULL, \
-		ft_monitor, NULL))
-			return (ft_thread_error(philo));
-*/	ft_monitor();
+	ft_monitor();
 	return (0);
 }
 
-//void	*ft_monitor(void *ptr)
 void	ft_monitor(void)
 {
 	int		philo;
@@ -51,7 +38,7 @@ void	ft_monitor(void)
 	{
 		if (philo == 0)
 			usleep(500);
-		if (g_global.philos[philo].state == ALIVE && (now = ft_get_time()) - g_global.philos[philo].last_meal > g_global.philos[philo].time_to_die)
+		if (g_global.philos[philo].state != -1 && (now = ft_get_time()) - g_global.philos[philo].last_meal > g_global.philos[philo].time_to_die)
 		{
 			g_global.state = DEAD;
 			printf("%ld %d died, last meal %ld ago at %ld\n", ft_get_time() - \
@@ -60,7 +47,6 @@ void	ft_monitor(void)
 		}
 		philo = (philo + 1) % g_global.number_of_philosophers;
 	}
-//	return (ptr);
 }
 
 void	*ft_launch_party(void *input)
@@ -69,7 +55,7 @@ void	*ft_launch_party(void *input)
 	int			i;
 
 	philo = (t_philos *)input;
-	if (philo->id % 2 == 1)
+	if (philo->id % 2 == 0)
 		usleep(philo->time_to_eat * 0.9);
 	philo->state = ALIVE;
 	philo->last_meal = ft_get_time();

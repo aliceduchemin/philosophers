@@ -28,12 +28,7 @@ void	ft_join_threads(int nb)
 	ptr = NULL;
 	i = 0;
 	if (nb == 1)
-	{
-	//	pthread_join(g_global.philos[0].thread, &ptr);
-	//	pthread_join(g_global.monitor_thread, &ptr);
-	//	printf("join succeeded\n");
 		return ;
-	}
 	while (i < nb)
 	{
 		pthread_join(g_global.philos[i].thread, &ptr);
