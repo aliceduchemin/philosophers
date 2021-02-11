@@ -1,0 +1,101 @@
+0 0 has taken left fork
+0 0 has taken right fork
+0 0 is eating
+2 2 has taken left fork
+2 2 has taken right fork
+2 2 is eating
+  0 1 start sleep 0 end usleep now=201
+201 0 is sleeping
+201 3 has taken left fork
+  2 1 start sleep 2 end usleep now=202
+202 2 is sleeping
+202 3 has taken right fork
+202 3 is eating
+202 1 has taken left fork
+202 1 has taken right fork
+202 1 is eating
+  0 2 start sleep 201 end usleep now=401
+401 0 is thinking
+  3 1 start sleep 202 end usleep now=404
+404 3 is sleeping
+  2 2 start sleep 202 end usleep now=404
+404 2 is thinking
+404 2 has taken left fork
+  1 1 start sleep 202 end usleep now=404
+404 1 is sleeping
+404 2 has taken right fork
+404 2 is eating
+404 0 has taken left fork
+404 0 has taken right fork
+404 0 is eating
+  3 2 start sleep 404 end usleep now=604
+604 3 is thinking
+  1 2 start sleep 404 end usleep now=604
+604 1 is thinking
+  2 1 start sleep 404 end usleep now=604
+604 2 is sleeping
+  0 1 start sleep 404 end usleep now=607
+607 0 is sleeping
+607 3 has taken left fork
+607 3 has taken right fork
+607 3 is eating
+607 1 has taken left fork
+607 1 has taken right fork
+607 1 is eating
+  2 2 start sleep 604 end usleep now=806
+806 2 is thinking
+  1 1 start sleep 607 end usleep now=807
+807 1 is sleeping
+  3 1 start sleep 607 end usleep now=807
+807 3 is sleeping
+  0 2 start sleep 607 end usleep now=808
+808 0 is thinking
+808 0 has taken left fork
+808 0 has taken right fork
+808 0 is eating
+808 2 has taken left fork
+808 2 has taken right fork
+808 2 is eating
+  0 1 start sleep 808 end usleep now=1008
+1008 0 is sleeping
+  2 1 start sleep 808 end usleep now=1009
+1009 2 is sleeping
+  1 2 start sleep 807 end usleep now=1010
+1010 1 is thinking
+1010 1 has taken left fork
+1010 1 has taken right fork
+1010 1 is eating
+  3 2 start sleep 807 end usleep now=1010
+1010 3 is thinking
+1010 3 has taken left fork
+1010 3 has taken right fork
+1010 3 is eating
+  2 2 start sleep 1009 end usleep now=1212
+1212 2 is thinking
+  3 1 start sleep 1010 end usleep now=1212
+1212 3 is sleeping
+  0 2 start sleep 1008 end usleep now=1212
+1212 0 is thinking
+  1 1 start sleep 1010 end usleep now=1212
+1212 1 is sleeping
+1212 0 has taken left fork
+1212 0 has taken right fork
+1212 0 is eating
+1214 2 has taken left fork
+1214 2 has taken right fork
+1214 2 is eating
+  0 1 start sleep 1212 end usleep now=1413
+1413 0 is sleeping
+  1 2 start sleep 1212 end usleep now=1413
+1413 1 is thinking
+  3 2 start sleep 1212 end usleep now=1413
+1413 3 is thinking
+  2 1 start sleep 1214 end usleep now=1433
+1433 2 is sleeping
+1433 1 died, last meal 423 ago at 1010
+1433 1 has taken left fork
+1433 1 has taken right fork
+1433 1 is eating
+  0 2 start sleep 1413 end usleep now=1615
+  2 2 start sleep 1433 end usleep now=1634
+  1 1 start sleep 1433 end usleep now=1634
