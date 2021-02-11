@@ -27,10 +27,6 @@
 typedef struct		s_philos
 {
 	int				id;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				time_to_die;
-	int				number_of_time_each_philosophers_must_eat;
 	long			last_meal;
 	pthread_t		thread;
 	int				state;
@@ -38,7 +34,6 @@ typedef struct		s_philos
 	int				*right_state;
 	pthread_mutex_t	left_mutex;
 	pthread_mutex_t	*right_mutex;
-	pthread_mutex_t	*p_to_global_mutex;
 }					t_philos;
 
 typedef struct		s_global
@@ -49,7 +44,10 @@ typedef struct		s_global
 	long			t0;
 	int				number_of_philosophers;
 	int				state;
-
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				time_to_die;
+	int				number_of_time_each_philosophers_must_eat;
 }					t_global;
 
 t_global	g_global;
@@ -58,20 +56,20 @@ int					ft_parsing(int ac, char **av);
 int					ft_number_of_args(int ac);
 int					ft_value_of_args(int ac, char **av);
 long				ft_get_time(void);
-void				ft_usleep(int wait, int philo, int i);
+void				ft_usleep(int wait);
 
 void				ft_monitor(void);
-//void				*ft_monitor(void *ptr);
 
 int					ft_init(int ac, char **av);
-int					ft_create_global(char **av);
-void				ft_create_philos(int ac, char **av);
+int					ft_create_global(int ac, char **av);
+void				ft_create_philos(void);
 void				ft_create_right_fork(void);
 int					ft_launch_threads(void);
 void				*ft_launch_party(void *input);
 
 void				ft_party(t_philos *philo);
 void				ft_eat(t_philos *philo);
+void				ft_forks(t_philos *philo);
 
 void				ft_join_threads(int nb);
 int					ft_destruct_global(void);

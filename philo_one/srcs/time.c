@@ -6,7 +6,7 @@
 /*   By: aduchemi <aduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 00:41:43 by aduchemi          #+#    #+#             */
-/*   Updated: 2021/02/09 23:30:41 by aduchemi         ###   ########.fr       */
+/*   Updated: 2021/02/11 17:59:12 by aduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,13 @@ long	ft_get_time(void)
 	return (ms);
 }
 
-void	ft_usleep(int wait, int philo, int i)
+void	ft_usleep(int wait)
 {
 	long	begin;
 	long	tmp;
-(void)philo;
-(void)i;
+
 	begin = ft_get_time();
 	tmp = begin + (long)wait;
 	while (ft_get_time() < tmp)
-	{
 		usleep(wait);
-	}
-//	printf("  %d %d start sleep %ld till %ld yet end usleep=%ld\n", philo, i, begin - g_global.t0, tmp - g_global.t0, ft_get_time() - g_global.t0);
 }
