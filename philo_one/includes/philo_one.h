@@ -71,7 +71,7 @@ void				ft_eat(t_philos *philo);
 void				ft_forks(t_philos *philo);
 
 void				ft_join_threads(int nb);
-int					ft_destruct_global(void);
+void				ft_destruct_global(void);
 int					ft_thread_error(int i);
 
 int					ft_atoi(const char *str);

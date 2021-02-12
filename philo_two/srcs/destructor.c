@@ -12,12 +12,11 @@
 
 #include "../includes/philo_two.h"
 
-int		ft_destruct_global(void)
+void	ft_destruct_global(void)
 {
 	free(g_global.philos);
 	sem_close(g_global.sem);
 	sem_close(g_global.limit);
-	return (0);
 }
 
 void	ft_join_threads(int nb)

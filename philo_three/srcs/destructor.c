@@ -12,7 +12,7 @@
 
 #include "../includes/philo_three.h"
 
-int		ft_destruct_global(void)
+void	ft_destruct_processes(void)
 {
 	int		philo;
 
@@ -22,8 +22,11 @@ int		ft_destruct_global(void)
 		kill(g_global.philos[philo].pid, SIGKILL);
 		philo++;
 	}
+}
+
+void	ft_destruct_global(void)
+{
 	free(g_global.philos);
 	sem_close(g_global.sem);
 	sem_close(g_global.limit);
-	return (0);
 }

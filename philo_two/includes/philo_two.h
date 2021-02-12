@@ -66,7 +66,7 @@ void			ft_party(t_philos *philo);
 void			ft_eat(t_philos *philo);
 
 void			ft_join_threads(int nb);
-int				ft_destruct_global(void);
+void			ft_destruct_global(void);
 
 int				ft_atoi(const char *str);
 int				ft_isdigit(int c);

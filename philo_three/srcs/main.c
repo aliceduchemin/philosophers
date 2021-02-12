@@ -14,16 +14,12 @@
 
 int		main(int ac, char **av)
 {
-	int		ret;
-
 	if (ft_parsing(ac, av))
 		return (1);
 	if (ft_init(ac, av))
 		return (1);
-	ret = ft_launch_threads();
+	ft_launch_threads();
+	ft_destruct_processes();
 	ft_destruct_global();
-	printf("clean exit\n");
-	if (ret == 1)
-		return (1);
 	return (0);
 }

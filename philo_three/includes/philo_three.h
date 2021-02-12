@@ -62,19 +62,18 @@ void			ft_usleep(int wait);
 int				ft_init(int ac, char **av);
 int				ft_create_global(int ac, char **av);
 void			ft_create_philos(void);
-int				ft_launch_threads(void);
-int				ft_fork_philos(int philo);
-int				ft_launch_party(t_philos *philo);
+void			ft_launch_threads(void);
+void			ft_fork_philos(int philo);
+void			ft_launch_party(t_philos *philo);
 
 void			*ft_monitor(void *philo);
 int				ft_liveliness(void);
-int				ft_kill_processes(void);
 
 void			ft_party(t_philos *philo);
 void			ft_eat(t_philos *philo);
 
-void			ft_join_threads(int nb);
-int				ft_destruct_global(void);
+void			ft_destruct_processes(void);
+void			ft_destruct_global(void);
 
 int				ft_atoi(const char *str);
 int				ft_isdigit(int c);

@@ -36,7 +36,7 @@ void	ft_join_threads(int nb)
 	}
 }
 
-int		ft_destruct_global(void)
+void	ft_destruct_global(void)
 {
 	int	i;
 
@@ -48,5 +48,4 @@ int		ft_destruct_global(void)
 	}
 	pthread_mutex_destroy(&(g_global.mutex));
 	free(g_global.philos);
-	return (0);
 }
