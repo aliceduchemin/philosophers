@@ -39,7 +39,6 @@ typedef struct		s_philos
 typedef struct		s_global
 {
 	t_philos		*philos;
-	pthread_t		monitor_thread;
 	pthread_mutex_t	mutex;
 	long			t0;
 	int				number_of_philosophers;

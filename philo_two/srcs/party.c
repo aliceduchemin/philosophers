@@ -18,50 +18,30 @@ void	ft_eat(t_philos *philo)
 
 	sem_wait(g_global.limit);
 	sem_wait(g_global.sem);
-	printf("%ld %d has taken a fork\n", ft_get_time() - \
-		g_global.starting_time, philo->id);
+	printf("%ld %d has taken a fork\n", ft_get_time() - g_global.t0, philo->id);
 	sem_wait(g_global.sem);
-	printf("%ld %d has taken a fork\n", ft_get_time() - \
-		g_global.starting_time, philo->id);
-	if ((now = ft_get_time()) - philo->last_meal > philo->time_to_die)
-	{
-		printf("%ld %d died\n", ft_get_time() - \
-			g_global.starting_time, philo->id);
-		g_global.state = DEAD;
-	}
-	else
-	{
-		printf("%ld %d is eating\n", ft_get_time() - \
-			g_global.starting_time, philo->id);
-		usleep(philo->time_to_eat * 1000);
-	}
+	printf("%ld %d has taken a fork\n", ft_get_time() - g_global.t0, philo->id);
+	now = ft_get_time();
+	philo->last_meal = now;
+	printf("%ld %d is eating\n", now - g_global.t0, philo->id);
+	ft_usleep(g_global.time_to_eat);
 	sem_post(g_global.limit);
 	sem_post(g_global.sem);
 	sem_post(g_global.sem);
-	philo->last_meal = now;
 }
 
-void	ft_sleep(t_philos *philo)
-{
-	printf("%ld %d is sleeping\n", ft_get_time() - \
-		g_global.starting_time, philo->id);
-	usleep(philo->time_to_sleep * 1000);
-}
-
-void	ft_think(t_philos *philo)
-{
-	printf("%ld %d is thinking\n", ft_get_time() - \
-		g_global.starting_time, philo->id);
-}
-
-int		ft_party(t_philos *philo)
+void	ft_party(t_philos *philo)
 {
 	ft_eat(philo);
-	if (g_global.state == DEAD)
-		return (1);
-	ft_sleep(philo);
-	if (g_global.state == DEAD)
-		return (1);
-	ft_think(philo);
-	return (0);
+	if (g_global.state != DEAD)
+	{
+		printf("%ld %d is sleeping\n", ft_get_time() - \
+			g_global.t0, philo->id);
+		ft_usleep(g_global.time_to_sleep);
+	}
+	if (g_global.state != DEAD)
+	{
+		printf("%ld %d is thinking\n", ft_get_time() - \
+			g_global.t0, philo->id);
+	}
 }

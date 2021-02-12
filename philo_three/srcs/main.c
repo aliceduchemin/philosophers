@@ -22,6 +22,7 @@ int		main(int ac, char **av)
 		return (1);
 	ret = ft_launch_threads();
 	ft_destruct_global();
+	printf("clean exit\n");
 	if (ret == 1)
 		return (1);
 	return (0);

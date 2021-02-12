@@ -28,18 +28,19 @@ typedef struct	s_philos
 {
 	int			id;
 	pid_t		pid;
-	int			time_to_eat;
-	int			time_to_sleep;
-	int			time_to_die;
-	int			number_of_time_each_philosophers_must_eat;
 	long		last_meal;
+	pthread_t	monitor_thread;
 }				t_philos;
 
 typedef struct	s_global
 {
 	t_philos	*philos;
-	long		starting_time;
+	long		t0;
 	int			number_of_philosophers;
+	int			time_to_eat;
+	int			time_to_sleep;
+	int			time_to_die;
+	int			number_of_time_each_philosophers_must_eat;
 	sem_t		*sem;
 	sem_t		*limit;
 	int			state;
@@ -56,22 +57,21 @@ int				ft_number_of_args(int ac);
 int				ft_value_of_args(int ac, char **av);
 
 long			ft_get_time(void);
+void			ft_usleep(int wait);
 
 int				ft_init(int ac, char **av);
-int				ft_create_global(char **av);
-void			ft_create_philos(int ac, char **av);
-void			ft_fill_starting_time(t_philos *philo);
+int				ft_create_global(int ac, char **av);
+void			ft_create_philos(void);
 int				ft_launch_threads(void);
 int				ft_fork_philos(int philo);
 int				ft_launch_party(t_philos *philo);
 
+void			*ft_monitor(void *philo);
 int				ft_liveliness(void);
 int				ft_kill_processes(void);
 
-int				ft_party(t_philos *philo);
+void			ft_party(t_philos *philo);
 void			ft_eat(t_philos *philo);
-void			ft_sleep(t_philos *philo);
-void			ft_think(t_philos *philo);
 
 void			ft_join_threads(int nb);
 int				ft_destruct_global(void);

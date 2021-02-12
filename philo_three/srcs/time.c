@@ -23,8 +23,13 @@ long	ft_get_time(void)
 	return (ms);
 }
 
-void	ft_fill_starting_time(t_philos *philo)
+void	ft_usleep(int wait)
 {
-	g_global.starting_time = ft_get_time();
-	philo->last_meal = g_global.starting_time;
+	long	begin;
+	long	tmp;
+
+	begin = ft_get_time();
+	tmp = begin + (long)wait;
+	while (ft_get_time() < tmp)
+		usleep(wait);
 }

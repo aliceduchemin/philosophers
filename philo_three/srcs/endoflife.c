@@ -19,6 +19,7 @@ int		ft_liveliness(void)
 
 	status = 0;
 	philo = 0;
+	printf("liveliness\n");
 	while (philo < g_global.number_of_philosophers)
 	{
 		waitpid(g_global.philos[philo].pid, &status, 0);
@@ -37,7 +38,7 @@ int		ft_liveliness(void)
 int		ft_kill_processes(void)
 {
 	int		philo;
-
+	printf("kill processes\n");
 	philo = 0;
 	while (philo < g_global.number_of_philosophers)
 	{

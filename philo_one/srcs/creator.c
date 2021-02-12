@@ -49,7 +49,7 @@ void	ft_create_philos(void)
 	while (i < g_global.number_of_philosophers)
 	{
 		g_global.philos[i].id = i;
-		g_global.philos[i].state = -1;
+		g_global.philos[i].state = ALIVE;
 		g_global.philos[i].last_meal = 0;
 		pthread_mutex_init(&(g_global.philos[i].left_mutex), NULL);
 		i++;

@@ -38,7 +38,7 @@ void	ft_monitor(void)
 	{
 		if (philo == 0)
 			usleep(500);
-		if (g_global.philos[philo].state != -1 && (now = ft_get_time()) - \
+		if (g_global.philos[philo].last_meal != 0 && (now = ft_get_time()) - \
 			g_global.philos[philo].last_meal > g_global.time_to_die)
 		{
 			g_global.state = DEAD;
