@@ -18,12 +18,15 @@ void	ft_eat(t_philos *philo)
 
 	sem_wait(g_global.limit);
 	sem_wait(g_global.sem);
-	printf("%ld %d has taken a fork\n", ft_get_time() - g_global.t0, philo->id);
+	if (g_global.state == ALIVE)
+		printf("%ld %d has taken a fork\n", ft_get_time() - g_global.t0, philo->id);
 	sem_wait(g_global.sem);
-	printf("%ld %d has taken a fork\n", ft_get_time() - g_global.t0, philo->id);
+	if (g_global.state == ALIVE)
+		printf("%ld %d has taken a fork\n", ft_get_time() - g_global.t0, philo->id);
 	now = ft_get_time();
 	philo->last_meal = now;
-	printf("%ld %d is eating\n", now - g_global.t0, philo->id);
+	if (g_global.state == ALIVE)
+		printf("%ld %d is eating\n", now - g_global.t0, philo->id);
 	ft_usleep(g_global.time_to_eat);
 	sem_post(g_global.limit);
 	sem_post(g_global.sem);

@@ -27,8 +27,8 @@ void	ft_eat(t_philos *philo)
 		pthread_mutex_unlock(&(g_global.mutex));
 		now = ft_get_time();
 		philo->last_meal = now;
-		printf("%ld %d is eating\n", now - \
-			g_global.t0, philo->id);
+		if (g_global.state == ALIVE)
+			printf("%ld %d is eating\n", now - g_global.t0, philo->id);
 		ft_usleep(g_global.time_to_eat);
 		pthread_mutex_unlock(&(philo->left_mutex));
 		pthread_mutex_unlock(philo->right_mutex);
@@ -44,14 +44,14 @@ void	ft_forks(t_philos *philo)
 		pthread_mutex_lock(philo->right_mutex);
 	else
 		pthread_mutex_lock(&(philo->left_mutex));
-	printf("%ld %d has taken left fork\n", ft_get_time() - \
-		g_global.t0, philo->id);
+	if (g_global.state == ALIVE)
+		printf("%ld %d has taken a fork\n", ft_get_time() - g_global.t0, philo->id);
 	if (philo->id % 2 == 0)
 		pthread_mutex_lock(&(philo->left_mutex));
 	else
 		pthread_mutex_lock(philo->right_mutex);
-	printf("%ld %d has taken right fork\n", ft_get_time() - \
-		g_global.t0, philo->id);
+	if (g_global.state == ALIVE)
+		printf("%ld %d has taken a fork\n", ft_get_time() - g_global.t0, philo->id);
 }
 
 void	ft_party(t_philos *philo)

@@ -22,7 +22,6 @@ void	ft_launch(void)
 		ft_fork_philos(philo);
 		philo++;
 	}
-	ft_liveliness();
 }
 
 void	ft_fork_philos(int philo)
@@ -54,9 +53,10 @@ void	*ft_monitor(void *input)
 			philo->last_meal > g_global.time_to_die)
 		{
 			g_global.state = DEAD;
-			printf("%ld %d died %ld\n", ft_get_time() - g_global.t0, philo->id, ft_get_time() - g_global.t0);
+			printf("%ld %d died\n", ft_get_time() - g_global.t0, philo->id);
 			ft_destruct_global();
 			exit (1);
+		//	return (NULL);
 		}
 	}
 	return (NULL);
@@ -72,6 +72,8 @@ void	ft_launch_party(t_philos *philo)
 	{
 		while (g_global.state == ALIVE)
 			ft_party(philo);
+		printf("%ld %d exit global dead\n", ft_get_time() - g_global.t0, philo->id);
+		exit (1);
 	}
 	else
 	{

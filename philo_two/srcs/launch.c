@@ -48,7 +48,7 @@ void	ft_monitor(void)
 		{
 			g_global.state = DEAD;
 			printf("%ld %d died\n", ft_get_time() - g_global.t0, philo);
-			break ;
+			return ;
 		}
 		philo = (philo + 1) % g_global.number_of_philosophers;
 	}

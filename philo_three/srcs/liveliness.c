@@ -19,12 +19,18 @@ int		ft_liveliness(void)
 
 	status = 0;
 	philo = 0;
-	while (philo < g_global.number_of_philosophers)
+/*	while (g_global.state == ALIVE)
+	{
+		usleep(500);
+	}*/
+//	while (philo < g_global.number_of_philosophers)
+	while (g_global.state == ALIVE)
 	{
 		waitpid(g_global.philos[philo].pid, &status, 0);
 		if (WEXITSTATUS(status) == 1)
 		{
 			g_global.state = DEAD;
+			printf("%ld wexittatus=1\n", ft_get_time() - g_global.t0);
 			return (1);
 		}
 		else if (WEXITSTATUS(status) == 2)
@@ -32,7 +38,8 @@ int		ft_liveliness(void)
 			g_global.state = FINISHED;
 			return (2);
 		}
-		philo++;
+		//philo++;
+		philo = (philo + 1) % g_global.number_of_philosophers;
 	}
 	return (0);
 }

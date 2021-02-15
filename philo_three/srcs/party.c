@@ -33,9 +33,7 @@ void	ft_eat(t_philos *philo)
 void	ft_party(t_philos *philo)
 {
 	ft_eat(philo);
-	printf("%ld %d is sleeping\n", ft_get_time() - \
-		g_global.t0, philo->id);
+	printf("%ld %d is sleeping\n", ft_get_time() - g_global.t0, philo->id);
 	ft_usleep(g_global.time_to_sleep);
-	printf("%ld %d is thinking\n", ft_get_time() - \
-		g_global.t0, philo->id);
+	printf("%ld %d is thinking\n", ft_get_time() - g_global.t0, philo->id);
 }
