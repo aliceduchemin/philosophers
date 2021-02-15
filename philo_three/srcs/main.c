@@ -18,7 +18,7 @@ int		main(int ac, char **av)
 		return (1);
 	if (ft_init(ac, av))
 		return (1);
-	ft_launch_threads();
+	ft_launch();
 	ft_destruct_processes();
 	ft_destruct_global();
 	return (0);

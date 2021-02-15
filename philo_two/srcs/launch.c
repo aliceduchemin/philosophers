@@ -77,6 +77,7 @@ void	*ft_launch_party(void *input)
 			ft_party(philo);
 			i++;
 		}
+		g_global.state = DEAD;
 	}
 	return (NULL);
 }

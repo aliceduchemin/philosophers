@@ -62,7 +62,7 @@ void			ft_usleep(int wait);
 int				ft_init(int ac, char **av);
 int				ft_create_global(int ac, char **av);
 void			ft_create_philos(void);
-void			ft_launch_threads(void);
+void			ft_launch(void);
 void			ft_fork_philos(int philo);
 void			ft_launch_party(t_philos *philo);
 

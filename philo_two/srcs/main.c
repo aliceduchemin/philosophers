@@ -14,16 +14,13 @@
 
 int		main(int ac, char **av)
 {
-	int		ret;
-
 	if (ft_parsing(ac, av))
 		return (1);
 	if (ft_init(ac, av))
 		return (1);
-	ret = ft_launch_threads();
+	if (ft_launch_threads() == 1)
+		return (1);
 	ft_join_threads(g_global.number_of_philosophers);
 	ft_destruct_global();
-	if (ret == 1)
-		return (1);
 	return (0);
 }

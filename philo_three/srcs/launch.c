@@ -12,7 +12,7 @@
 
 #include "../includes/philo_three.h"
 
-void	ft_launch_threads(void)
+void	ft_launch(void)
 {
 	int		philo;
 
@@ -81,8 +81,6 @@ void	ft_launch_party(t_philos *philo)
 			ft_party(philo);
 			i++;
 		}
-		ft_destruct_global();
-		printf("end philo=%d\n", philo->id);
 		exit (2);
 	}
 }
