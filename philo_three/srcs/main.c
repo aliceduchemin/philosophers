@@ -19,7 +19,7 @@ int		main(int ac, char **av)
 	if (ft_init(ac, av))
 		return (1);
 	ft_launch();
-	ft_liveliness();
+	sem_wait(g_global.alive);
 	ft_destruct_processes();
 	ft_destruct_global();
 	return (0);

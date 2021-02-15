@@ -19,25 +19,21 @@ void	ft_launch(void)
 	philo = 0;
 	while (philo < g_global.number_of_philosophers)
 	{
-		ft_fork_philos(philo);
-		philo++;
-	}
-}
-
-void	ft_fork_philos(int philo)
-{
-	g_global.philos[philo].pid = fork();
-	if (g_global.philos[philo].pid == 0)
-	{
-		if (pthread_create(&(g_global.philos[philo].monitor_thread), NULL, \
-		ft_monitor, (void *)(&(g_global.philos[philo]))))
+		g_global.philos[philo].pid = fork();
+		if (g_global.philos[philo].pid == 0)
 		{
-			printf("Thread %d's creation did not work\n", philo);
-			ft_destruct_global();
-			exit (1);
+			if (pthread_create(&(g_global.philos[philo].monitor_thread), NULL, \
+			ft_monitor, (void *)(&(g_global.philos[philo]))))
+			{
+				printf("Thread %d's creation did not work\n", philo);
+				ft_destruct_global();
+				exit (1);
+			}
+			pthread_detach(g_global.philos[philo].monitor_thread);
+			ft_launch_party(&(g_global.philos[philo]));
+			exit (0);
 		}
-		pthread_detach(g_global.philos[philo].monitor_thread);
-		ft_launch_party(&(g_global.philos[philo]));
+		philo++;
 	}
 }
 
@@ -47,16 +43,13 @@ void	*ft_monitor(void *input)
 	long	now;
 
 	philo = (t_philos *)input;
-	while (g_global.state == ALIVE)
+	while (1)
 	{
 		if (philo->last_meal != 0 && (now = ft_get_time()) - \
 			philo->last_meal > g_global.time_to_die)
 		{
-			g_global.state = DEAD;
 			printf("%ld %d died\n", ft_get_time() - g_global.t0, philo->id);
-			ft_destruct_global();
-			exit (1);
-		//	return (NULL);
+			sem_post(g_global.alive);
 		}
 	}
 	return (NULL);
@@ -70,19 +63,16 @@ void	ft_launch_party(t_philos *philo)
 	i = 0;
 	if (g_global.number_of_time_each_philosophers_must_eat == -1)
 	{
-		while (g_global.state == ALIVE)
+		while (1)
 			ft_party(philo);
-		printf("%ld %d exit global dead\n", ft_get_time() - g_global.t0, philo->id);
-		exit (1);
 	}
 	else
 	{
-		while (i < g_global.number_of_time_each_philosophers_must_eat \
-		&& g_global.state == ALIVE)
+		while (i < g_global.number_of_time_each_philosophers_must_eat)
 		{
 			ft_party(philo);
 			i++;
 		}
-		exit (2);
+		sem_post(g_global.alive);
 	}
 }

@@ -2,7 +2,6 @@ SRCS		= srcs/main.c \
 			srcs/parsing.c \
 			srcs/creator.c \
 			srcs/launch.c \
-			srcs/liveliness.c \
 			srcs/time.c \
 			srcs/party.c \
 			srcs/destructor.c \

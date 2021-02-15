@@ -42,8 +42,8 @@ typedef struct	s_global
 	int			time_to_die;
 	int			number_of_time_each_philosophers_must_eat;
 	sem_t		*sem;
+	sem_t		*alive;
 	sem_t		*limit;
-	int			state;
 }				t_global;
 
 t_global		g_global;
@@ -63,11 +63,9 @@ int				ft_init(int ac, char **av);
 int				ft_create_global(int ac, char **av);
 void			ft_create_philos(void);
 void			ft_launch(void);
-void			ft_fork_philos(int philo);
 void			ft_launch_party(t_philos *philo);
 
 void			*ft_monitor(void *philo);
-int				ft_liveliness(void);
 
 void			ft_party(t_philos *philo);
 void			ft_eat(t_philos *philo);
