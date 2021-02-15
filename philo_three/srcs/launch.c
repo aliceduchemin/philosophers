@@ -41,16 +41,20 @@ void	*ft_monitor(void *input)
 {
 	t_philos	*philo;
 	long	now;
+	int		i;
 
 	philo = (t_philos *)input;
+	i = 0;
 	while (1)
 	{
-		if (philo->last_meal != 0 && (now = ft_get_time()) - \
-			philo->last_meal > g_global.time_to_die)
+		if (g_global.philos[i].last_meal != 0 && (now = ft_get_time()) - \
+			g_global.philos[i].last_meal > g_global.time_to_die)
 		{
-			printf("%ld %d died\n", ft_get_time() - g_global.t0, philo->id);
+			printf("%ld %d died\n", ft_get_time() - g_global.t0, g_global.philos[i].id);
 			sem_post(g_global.alive);
 		}
+		usleep(500);
+		i = (i + 1) % g_global.number_of_philosophers;
 	}
 	return (NULL);
 }
