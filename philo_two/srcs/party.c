@@ -6,7 +6,7 @@
 /*   By: aduchemi <aduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 20:07:30 by aduchemi          #+#    #+#             */
-/*   Updated: 2021/02/09 20:08:15 by aduchemi         ###   ########.fr       */
+/*   Updated: 2021/02/15 18:08:43 by aduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ void	ft_eat(t_philos *philo)
 	sem_wait(g_global.limit);
 	sem_wait(g_global.sem);
 	if (g_global.state == ALIVE)
-		printf("%ld %d has taken a fork\n", ft_get_time() - g_global.t0, philo->id);
+		printf("%ld %d has taken a fork\n", ft_get_time() - \
+			g_global.t0, philo->id);
 	sem_wait(g_global.sem);
 	if (g_global.state == ALIVE)
-		printf("%ld %d has taken a fork\n", ft_get_time() - g_global.t0, philo->id);
+		printf("%ld %d has taken a fork\n", ft_get_time() - \
+			g_global.t0, philo->id);
 	now = ft_get_time();
 	philo->last_meal = now;
 	if (g_global.state == ALIVE)
@@ -38,13 +40,11 @@ void	ft_party(t_philos *philo)
 	ft_eat(philo);
 	if (g_global.state != DEAD)
 	{
-		printf("%ld %d is sleeping\n", ft_get_time() - \
-			g_global.t0, philo->id);
+		printf("%ld %d is sleeping\n", ft_get_time() - g_global.t0, philo->id);
 		ft_usleep(g_global.time_to_sleep);
 	}
 	if (g_global.state != DEAD)
 	{
-		printf("%ld %d is thinking\n", ft_get_time() - \
-			g_global.t0, philo->id);
+		printf("%ld %d is thinking\n", ft_get_time() - g_global.t0, philo->id);
 	}
 }

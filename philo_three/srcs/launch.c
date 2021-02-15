@@ -6,7 +6,7 @@
 /*   By: aduchemi <aduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 23:53:03 by aduchemi          #+#    #+#             */
-/*   Updated: 2021/02/09 23:53:29 by aduchemi         ###   ########.fr       */
+/*   Updated: 2021/02/15 18:11:01 by aduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void	ft_launch(void)
 			{
 				printf("Thread %d's creation did not work\n", philo);
 				ft_destruct_global();
-				exit (1);
+				exit(1);
 			}
 			pthread_detach(g_global.philos[philo].monitor_thread);
 			ft_launch_party(&(g_global.philos[philo]));
-			exit (0);
+			exit(0);
 		}
 		philo++;
 	}
@@ -40,8 +40,8 @@ void	ft_launch(void)
 void	*ft_monitor(void *input)
 {
 	t_philos	*philo;
-	long	now;
-	int		i;
+	long		now;
+	int			i;
 
 	philo = (t_philos *)input;
 	i = 0;
@@ -50,7 +50,8 @@ void	*ft_monitor(void *input)
 		if (g_global.philos[i].last_meal != 0 && (now = ft_get_time()) - \
 			g_global.philos[i].last_meal > g_global.time_to_die)
 		{
-			printf("%ld %d died\n", ft_get_time() - g_global.t0, g_global.philos[i].id);
+			printf("%ld %d died\n", ft_get_time() - \
+				g_global.t0, g_global.philos[i].id);
 			sem_post(g_global.alive);
 		}
 		usleep(500);

@@ -6,7 +6,7 @@
 /*   By: aduchemi <aduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 23:55:25 by aduchemi          #+#    #+#             */
-/*   Updated: 2021/02/10 13:51:59 by aduchemi         ###   ########.fr       */
+/*   Updated: 2021/02/15 18:09:40 by aduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,17 @@ int		ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-void	ft_putstr_fd(char *s, int fd)
+int		ft_strlen(char *s)
 {
 	int		i;
 
 	i = 0;
 	while (s[i])
-	{
-		ft_putchar_fd(s[i], fd);
 		i++;
-	}
+	return (i);
 }
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-	write(fd, &c, 1);
+	write(fd, s, ft_strlen(s));
 }

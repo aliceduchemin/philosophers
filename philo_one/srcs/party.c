@@ -6,7 +6,7 @@
 /*   By: aduchemi <aduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 00:43:39 by aduchemi          #+#    #+#             */
-/*   Updated: 2021/02/11 18:21:51 by aduchemi         ###   ########.fr       */
+/*   Updated: 2021/02/15 18:07:08 by aduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,15 @@ void	ft_forks(t_philos *philo)
 	else
 		pthread_mutex_lock(&(philo->left_mutex));
 	if (g_global.state == ALIVE)
-		printf("%ld %d has taken a fork\n", ft_get_time() - g_global.t0, philo->id);
+		printf("%ld %d has taken a fork\n", ft_get_time() - \
+			g_global.t0, philo->id);
 	if (philo->id % 2 == 0)
 		pthread_mutex_lock(&(philo->left_mutex));
 	else
 		pthread_mutex_lock(philo->right_mutex);
 	if (g_global.state == ALIVE)
-		printf("%ld %d has taken a fork\n", ft_get_time() - g_global.t0, philo->id);
+		printf("%ld %d has taken a fork\n", ft_get_time() - \
+			g_global.t0, philo->id);
 }
 
 void	ft_party(t_philos *philo)
