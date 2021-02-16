@@ -59,7 +59,7 @@ void			ft_usleep(int wait);
 int				ft_init(int ac, char **av);
 int				ft_create_global(int ac, char **av);
 void			ft_create_philo(void);
-void			ft_monitor(void);
+int				ft_monitor(void);
 int				ft_launch_threads(void);
 void			*ft_launch_party(void *input);
 

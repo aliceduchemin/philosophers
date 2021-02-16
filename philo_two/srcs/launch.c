@@ -33,7 +33,7 @@ int		ft_launch_threads(void)
 	return (0);
 }
 
-void	ft_monitor(void)
+int		ft_monitor(void)
 {
 	int		philo;
 	long	now;
@@ -50,10 +50,11 @@ void	ft_monitor(void)
 		{
 			g_global.state = DEAD;
 			printf("%ld %d died\n", ft_get_time() - g_global.t0, philo);
-			return ;
+			return (1);
 		}
 		philo = (philo + 1) % g_global.number_of_philosophers;
 	}
+	return (0);
 }
 
 void	*ft_launch_party(void *input)
