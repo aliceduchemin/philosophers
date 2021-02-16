@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-# include <stdio.h>
+//# include <stdio.h>
 # include <sys/time.h>
 # include <pthread.h>
 # include <semaphore.h>
@@ -57,6 +57,7 @@ int				ft_number_of_args(int ac);
 int				ft_value_of_args(int ac, char **av);
 
 long			ft_get_time(void);
+void			ft_print(int philo, char *msg);
 void			ft_usleep(int wait);
 
 int				ft_init(int ac, char **av);
@@ -78,5 +79,7 @@ int				ft_isdigit(int c);
 int				ft_strcmp(const char *s1, const char *s2);
 void			ft_putstr_fd(char *s, int fd);
 int				ft_strlen(char *s);
-
+void			ft_strcat(char *dst, char *src);
+void			ft_itoa(char *s, int n);
+void			ft_bzero(void *s, size_t n);
 #endif

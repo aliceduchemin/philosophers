@@ -4,6 +4,8 @@ SRCS		= srcs/main.c \
 			srcs/launch.c \
 			srcs/time.c \
 			srcs/party.c \
+			srcs/ft_itoa.c \
+			srcs/print.c \
 			srcs/destructor.c \
 			srcs/utils.c
 

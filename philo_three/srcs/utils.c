@@ -74,3 +74,31 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	write(fd, s, ft_strlen(s));
 }
+
+void	ft_strcat(char *dst, char *src)
+{
+	unsigned int	length_dst;
+	unsigned int	i;
+
+	length_dst = ft_strlen(dst);
+	i = 0;
+	while (src[i])
+	{
+		dst[length_dst] = src[i];
+		length_dst++;
+		i++;
+	}
+	dst[length_dst] = 0;
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((char *)s)[i] = '\0';
+		i++;
+	}
+}

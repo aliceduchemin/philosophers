@@ -25,7 +25,7 @@ void	ft_launch(void)
 			if (pthread_create(&(g_global.philos[philo].monitor_thread), NULL, \
 			ft_monitor, (void *)(&(g_global.philos[philo]))))
 			{
-				printf("Thread %d's creation did not work\n", philo);
+				ft_putstr_fd("Thread creation did not work\n", 2);
 				ft_destruct_global();
 				exit(1);
 			}
@@ -50,8 +50,7 @@ void	*ft_monitor(void *input)
 		if (g_global.philos[i].last_meal != 0 && (now = ft_get_time()) - \
 			g_global.philos[i].last_meal > g_global.time_to_die)
 		{
-			printf("%ld %d died\n", ft_get_time() - \
-				g_global.t0, g_global.philos[i].id);
+			ft_print(philo->id, "died");
 			sem_post(g_global.alive);
 		}
 		usleep(500);
