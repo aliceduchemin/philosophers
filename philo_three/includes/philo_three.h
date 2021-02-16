@@ -6,7 +6,7 @@
 /*   By: aduchemi <aduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 23:47:37 by aduchemi          #+#    #+#             */
-/*   Updated: 2021/02/09 23:49:47 by aduchemi         ###   ########.fr       */
+/*   Updated: 2021/02/16 15:16:00 by aduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-//# include <stdio.h>
 # include <sys/time.h>
 # include <pthread.h>
 # include <semaphore.h>
@@ -43,14 +42,11 @@ typedef struct	s_global
 	int			number_of_time_each_philosophers_must_eat;
 	sem_t		*sem;
 	sem_t		*alive;
+	sem_t		*count;
 	sem_t		*limit;
 }				t_global;
 
 t_global		g_global;
-
-# define DEAD 0
-# define ALIVE 1
-# define FINISHED 2
 
 int				ft_parsing(int ac, char **av);
 int				ft_number_of_args(int ac);
@@ -67,6 +63,7 @@ void			ft_launch(void);
 void			ft_launch_party(t_philos *philo);
 
 void			*ft_monitor(void *philo);
+void			ft_count_nb_time(void);
 
 void			ft_party(t_philos *philo);
 void			ft_eat(t_philos *philo);

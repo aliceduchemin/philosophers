@@ -36,6 +36,7 @@ typedef struct	s_global
 	int			time_to_sleep;
 	int			time_to_die;
 	int			number_of_time_each_philosophers_must_eat;
+	int			nb_of_meals;
 	long		t0;
 	int			number_of_philosophers;
 	sem_t		*sem;

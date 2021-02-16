@@ -35,8 +35,9 @@ int		ft_create_global(int ac, char **av)
 	g_global.sem = sem_open("Sem", O_CREAT, 0644, \
 		g_global.number_of_philosophers);
 	sem_unlink("Alive");
-	g_global.alive = sem_open("Alive", O_CREAT, 0644, \
-		0);
+	g_global.alive = sem_open("Alive", O_CREAT, 0644, 0);
+	sem_unlink("Count");
+	g_global.count = sem_open("Count", O_CREAT, 0644, 0);
 	sem_unlink("Limit");
 	g_global.limit = sem_open("Limit", O_CREAT, 0644, \
 		g_global.number_of_philosophers / 2);

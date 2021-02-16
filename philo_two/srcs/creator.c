@@ -31,6 +31,7 @@ int		ft_create_global(int ac, char **av)
 			ft_atoi(av[5]);
 	else
 		g_global.number_of_time_each_philosophers_must_eat = -1;
+	g_global.nb_of_meals = 0;
 	sem_unlink("Sem");
 	g_global.sem = sem_open("Sem", O_CREAT, 0644, \
 		g_global.number_of_philosophers);

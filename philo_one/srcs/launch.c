@@ -6,7 +6,7 @@
 /*   By: aduchemi <aduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 00:40:33 by aduchemi          #+#    #+#             */
-/*   Updated: 2021/02/11 17:58:40 by aduchemi         ###   ########.fr       */
+/*   Updated: 2021/02/16 16:24:02 by aduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ void	ft_monitor(void)
 {
 	int		philo;
 	long	now;
+	int		tmp;
 
+	tmp = g_global.number_of_time_each_philosophers_must_eat;
 	philo = 0;
-	while (g_global.state == ALIVE)
+	while (g_global.state == ALIVE && (tmp == -1 || g_global.nb_of_meals < tmp))
 	{
 		if (philo == 0)
 			usleep(500);
@@ -73,7 +75,7 @@ void	*ft_launch_party(void *input)
 			ft_party(philo);
 			i++;
 		}
-		g_global.state = DEAD;
+		g_global.nb_of_meals++;
 	}
 	return (NULL);
 }

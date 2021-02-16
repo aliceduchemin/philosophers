@@ -4,10 +4,10 @@ SRCS		= srcs/main.c \
 			srcs/launch.c \
 			srcs/time.c \
 			srcs/party.c \
-			srcs/ft_itoa.c \
 			srcs/print.c \
 			srcs/destructor.c \
-			srcs/utils.c
+			srcs/utils_parsing.c \
+			srcs/utils_print.c
 
 
 OBJS		= $(SRCS:.c=.o)

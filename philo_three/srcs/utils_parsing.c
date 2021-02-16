@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aduchemi <aduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/09 23:55:25 by aduchemi          #+#    #+#             */
-/*   Updated: 2021/02/15 18:09:40 by aduchemi         ###   ########.fr       */
+/*   Created: 2021/02/16 15:23:57 by aduchemi          #+#    #+#             */
+/*   Updated: 2021/02/16 15:23:58 by aduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,37 +68,4 @@ int		ft_strlen(char *s)
 	while (s[i])
 		i++;
 	return (i);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	write(fd, s, ft_strlen(s));
-}
-
-void	ft_strcat(char *dst, char *src)
-{
-	unsigned int	length_dst;
-	unsigned int	i;
-
-	length_dst = ft_strlen(dst);
-	i = 0;
-	while (src[i])
-	{
-		dst[length_dst] = src[i];
-		length_dst++;
-		i++;
-	}
-	dst[length_dst] = 0;
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		((char *)s)[i] = '\0';
-		i++;
-	}
 }

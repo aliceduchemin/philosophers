@@ -32,6 +32,7 @@ int		ft_create_global(int ac, char **av)
 			ft_atoi(av[5]);
 	else
 		g_global.number_of_time_each_philosophers_must_eat = -1;
+	g_global.nb_of_meals = 0;
 	pthread_mutex_init(&(g_global.mutex), NULL);
 	g_global.state = ALIVE;
 	if (!(g_global.philos = malloc(sizeof(t_philos) * \

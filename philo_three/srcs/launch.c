@@ -6,7 +6,7 @@
 /*   By: aduchemi <aduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 23:53:03 by aduchemi          #+#    #+#             */
-/*   Updated: 2021/02/15 18:11:01 by aduchemi         ###   ########.fr       */
+/*   Updated: 2021/02/16 15:16:46 by aduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,23 @@ void	ft_launch(void)
 		}
 		philo++;
 	}
+	ft_count_nb_time();
+}
+
+void	ft_count_nb_time(void)
+{
+	int		philo;
+
+	if (g_global.number_of_time_each_philosophers_must_eat != -1)
+	{
+		philo = 0;
+		while (philo < g_global.number_of_philosophers)
+		{
+			sem_wait(g_global.count);
+			philo++;
+		}
+		sem_post(g_global.alive);
+	}
 }
 
 void	*ft_monitor(void *input)
@@ -51,7 +68,14 @@ void	*ft_monitor(void *input)
 			g_global.philos[i].last_meal > g_global.time_to_die)
 		{
 			ft_print(philo->id, "died");
+			i = 0;
+			while (i < g_global.number_of_philosophers)
+			{
+				sem_post(g_global.count);
+				i++;
+			}
 			sem_post(g_global.alive);
+			exit(0);
 		}
 		usleep(500);
 		i = (i + 1) % g_global.number_of_philosophers;
@@ -77,6 +101,6 @@ void	ft_launch_party(t_philos *philo)
 			ft_party(philo);
 			i++;
 		}
-		sem_post(g_global.alive);
+		sem_post(g_global.count);
 	}
 }
