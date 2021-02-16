@@ -31,5 +31,5 @@ void	ft_usleep(int wait)
 	begin = ft_get_time();
 	tmp = begin + (long)wait;
 	while (ft_get_time() < tmp)
-		usleep(wait);
+		usleep(wait * 2);
 }
