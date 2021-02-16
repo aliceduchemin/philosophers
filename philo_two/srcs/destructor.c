@@ -19,7 +19,7 @@ void	ft_destruct_global(void)
 	sem_close(g_global.limit);
 }
 
-void	ft_join_threads(int nb)
+int		ft_join_threads(int nb)
 {
 	void	*ptr;
 	int		i;
@@ -27,10 +27,11 @@ void	ft_join_threads(int nb)
 	ptr = NULL;
 	i = 0;
 	if (nb == 1)
-		return ;
+		return (0);
 	while (i < nb)
 	{
 		pthread_join(g_global.philos[i].thread, &ptr);
 		i++;
 	}
+	return (0);
 }
