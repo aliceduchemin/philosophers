@@ -27,8 +27,6 @@ int		ft_launch_threads(void)
 			ft_destruct_global();
 			return (1);
 		}
-		if (g_global.number_of_philosophers == 1)
-			pthread_detach(g_global.philos[0].thread);
 		philo++;
 	}
 	ft_monitor();

@@ -28,5 +28,6 @@ void	ft_destruct_global(void)
 {
 	free(g_global.philos);
 	sem_close(g_global.sem);
+	sem_post(g_global.limit);
 	sem_close(g_global.limit);
 }
