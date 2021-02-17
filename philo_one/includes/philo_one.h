@@ -58,7 +58,7 @@ int					ft_value_of_args(int ac, char **av);
 long				ft_get_time(void);
 void				ft_usleep(int wait);
 
-void				ft_monitor(void);
+int					ft_monitor(void);
 
 int					ft_init(int ac, char **av);
 int					ft_create_global(int ac, char **av);
@@ -71,7 +71,7 @@ void				ft_party(t_philos *philo);
 void				ft_eat(t_philos *philo);
 void				ft_forks(t_philos *philo);
 
-void				ft_join_threads(int nb);
+int					ft_join_threads(int nb);
 void				ft_destruct_global(void);
 int					ft_thread_error(int i);
 

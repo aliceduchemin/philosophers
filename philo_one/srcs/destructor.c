@@ -20,20 +20,17 @@ int		ft_thread_error(int i)
 	return (1);
 }
 
-void	ft_join_threads(int nb)
+int		ft_join_threads(int nb)
 {
-	void	*ptr;
 	int		i;
 
-	ptr = NULL;
 	i = 0;
-	if (nb == 1)
-		return ;
 	while (i < nb)
 	{
-		pthread_join(g_global.philos[i].thread, &ptr);
+		pthread_join(g_global.philos[i].thread, NULL);
 		i++;
 	}
+	return (0);
 }
 
 void	ft_destruct_global(void)

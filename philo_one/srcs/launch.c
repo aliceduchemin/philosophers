@@ -28,7 +28,7 @@ int		ft_launch_threads(void)
 	return (0);
 }
 
-void	ft_monitor(void)
+int		ft_monitor(void)
 {
 	int		philo;
 	long	now;
@@ -45,10 +45,11 @@ void	ft_monitor(void)
 		{
 			g_global.state = DEAD;
 			printf("%ld %d died\n", ft_get_time() - g_global.t0, philo);
-			return ;
+			return (0);
 		}
 		philo = (philo + 1) % g_global.number_of_philosophers;
 	}
+	return (0);
 }
 
 void	*ft_launch_party(void *input)
@@ -56,12 +57,12 @@ void	*ft_launch_party(void *input)
 	t_philos	*philo;
 	int			i;
 
+	i = 0;
 	philo = (t_philos *)input;
 	if (philo->id % 2 == 0)
 		usleep(g_global.time_to_eat * 0.9);
 	philo->state = ALIVE;
 	philo->last_meal = ft_get_time();
-	i = 0;
 	if (g_global.number_of_time_each_philosophers_must_eat == -1)
 	{
 		while (g_global.state == ALIVE)

@@ -37,6 +37,8 @@ void	ft_eat(t_philos *philo)
 
 void	ft_party(t_philos *philo)
 {
+	if (g_global.number_of_philosophers == 1)
+		return ;
 	ft_eat(philo);
 	if (g_global.state == ALIVE)
 	{
