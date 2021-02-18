@@ -6,7 +6,7 @@
 /*   By: aduchemi <aduchemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 00:43:39 by aduchemi          #+#    #+#             */
-/*   Updated: 2021/02/15 18:07:08 by aduchemi         ###   ########.fr       */
+/*   Updated: 2021/02/18 11:54:19 by aduchemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,10 @@ void	ft_forks(t_philos *philo)
 void	ft_party(t_philos *philo)
 {
 	if (g_global.number_of_philosophers == 1)
+	{
+		ft_usleep(g_global.time_to_die * 1.1);
 		return ;
+	}
 	ft_eat(philo);
 	if (g_global.state == ALIVE)
 	{
